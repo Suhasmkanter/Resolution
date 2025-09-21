@@ -8,8 +8,8 @@ function Navbar() {
 
   return (
     <nav className=" bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
-      <div className="w-full px-4 lg:px-6  ">
-        <div className="w-[100%] flex justify-around  p-4 items-center h-16 sm:h-20">
+      <div className="w-full  lg:px-6  ">
+        <div className="w-[100%] flex justify-between px-5   items-center h-16 sm:h-20">
           {/* Brand */}
           <div className="flex  items-center ">
             <Link to="/" className="flex items-center space-x-2">
