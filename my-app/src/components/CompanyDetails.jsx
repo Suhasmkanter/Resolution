@@ -10,9 +10,9 @@ export default function CompanyDetails() {
                 </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-12">
+            <div className="grid gird-cols-1  md:grid-cols-2 gap-12">
                 {/* Company Information */}
-                <div className="ml-44">
+                <div className=" lg:ml-44">
                     <div>
                         <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
                             <Building className="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" />
@@ -57,7 +57,7 @@ export default function CompanyDetails() {
                 </div>
 
                 {/* Legal Information */}
-                <div className="ml-44">
+                <div className="lg:ml-44">
                     <div>
                         <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
                             <Scale className="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" />
