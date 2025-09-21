@@ -196,7 +196,7 @@ export default function PhotoPage() {
             <div className="col-span-2 space-y-4 sm:space-y-6">
               <div className="w-full max-w-[950px] h-[500px] flex justify-center  overflow-hidden">
                 <img
-                  src="/forest-bhai.jpg"
+                  src={photo.imageURL}
                   alt="Photo"
                   className="w-full h-full object-contain rounded-lg shadow-md"
                 />

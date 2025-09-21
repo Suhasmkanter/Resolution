@@ -8,7 +8,16 @@ export const mockPhotos = [{
   category: "Nature"
 },
 {
-  id: 1.1,
+  id: 2,
+  title: "Forest Path",
+  imageURL: "https://pixabay.com/get/gb33dae9af6ae60f476a64ad2684183e2facd8fba0ef6854f3417bd95a5e2c9072408b4a088634d9249759d2e0b3d7a1cd0a55808b3124a2e698404819869df16_1280.jpg",
+  uploader: "John Doe",
+  views: 15420,
+  downloads: 2340,
+  category: "Nature"
+},
+{
+  id: 3,
   title: "NewBorn ",
   imageURL: "/newborn.jpg",
   uploader: "John Doe",
@@ -16,7 +25,7 @@ export const mockPhotos = [{
   downloads: 2340,
   category: "Nature"
 }, {
-  id: 2,
+  id: 4,
   title: "Urban Architecture",
   imageURL: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop",
   uploader: "Jane Smith",
@@ -25,7 +34,7 @@ export const mockPhotos = [{
   category: "Architecture"
 },
 {
-  id: 3,
+  id: 5,
   title: "Ocean Waves",
   imageURL: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop",
   uploader: "Mike Johnson",
@@ -34,7 +43,7 @@ export const mockPhotos = [{
   category: "Nature"
 },
 {
-  id: 4,
+  id: 6,
   title: "City Lights",
   imageURL: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400&h=300&fit=crop",
   uploader: "Sarah Wilson",
@@ -43,7 +52,7 @@ export const mockPhotos = [{
   category: "Urban"
 },
 {
-  id: 5,
+  id: 7,
   title: "Forest Path",
   imageURL: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop",
   uploader: "David Brown",
@@ -52,7 +61,7 @@ export const mockPhotos = [{
   category: "Nature"
 },
 {
-  id: 6,
+  id: 8,
   title: "Modern Interior",
   imageURL: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop",
   uploader: "Lisa Davis",
@@ -61,7 +70,7 @@ export const mockPhotos = [{
   category: "Interior"
 },
 {
-  id: 7,
+  id: 9,
   title: "Desert Landscape",
   imageURL: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
   uploader: "Tom Anderson",
@@ -70,7 +79,7 @@ export const mockPhotos = [{
   category: "Nature"
 },
 {
-  id: 8,
+  id: 10,
   title: "Abstract Art",
   imageURL: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=300&fit=crop",
   uploader: "Emma Taylor",
