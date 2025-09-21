@@ -29,12 +29,20 @@ export default function UploadPage() {
 
   const onDrop = useCallback((acceptedFiles) => {
     const file = acceptedFiles[0];
+    console.log(file);
+
     if (file) {
       setUploadedFile(file);
 
       // Create preview URL
       const previewUrl = URL.createObjectURL(file);
       setPreview(previewUrl);
+
+      const img = new Image();
+      img.src = previewUrl;
+      img.onload = () => {
+        alert(`Image dimensions: ${img.width}x${img.height}`);
+      };
     }
   }, []);
 

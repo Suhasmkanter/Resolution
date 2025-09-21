@@ -14,6 +14,7 @@ import PhotoPage from "./pages/PhotoPage";
 import useAuthStore from "./store/useAuthStore";
 import { supabase } from "./supabaseClient";
 import Explore from "./pages/Explore";
+import Learning from "./pages/Learning";
 
 function App() {
   // In your Auth store or App root
@@ -43,6 +44,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/auth/callback" element={<AuthCallback />} />
         <Route path="/photo/:id" element={<PhotoPage />} />
+        <Route path="/learning" element={<Learning />} />
         <Route path="/explore" element={<Explore />} />
         <Route
           path="/dashboard"

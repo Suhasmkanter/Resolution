@@ -171,7 +171,7 @@ export default function PhotoPage() {
       <div className="min-h-full bg-gray-50">
         <div className="max-w-full  mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
           {/* Breadcrumb */}
-          {/* <nav className="mb-6 sm:mb-8">
+          <nav className="mb-6 sm:mb-8">
             <ol className="flex items-center space-x-2 text-sm text-gray-600">
               <li>
                 <Link to="/" className="hover:text-blue-600">Home</Link>
@@ -189,22 +189,19 @@ export default function PhotoPage() {
               </li>
               <li className="text-gray-900">{photo.title}</li>
             </ol>
-          </nav> */}
+          </nav>
 
-          <div className="grid grid-cols-1  lg:grid-cols-2 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1  lg:grid-cols-3 gap-4 sm:gap-8">
             {/* Photo Display */}
-            <div className="space-y-4 sm:space-y-6">
-              <div className="bg-black rounded-lg shadow-md overflow-hidden">
-                <div className="w-">
-
-
-                </div>
+            <div className="col-span-2 space-y-4 sm:space-y-6">
+              <div className="w-full max-w-[950px] h-[500px] flex justify-center  overflow-hidden">
                 <img
-                  src={photo.imageURL}
-                  alt={photo.title}
-                  className="w-full max-w-full h-auto object-cover"
+                  src="/forest-bhai.jpg"
+                  alt="Photo"
+                  className="w-full h-full object-contain rounded-lg shadow-md"
                 />
               </div>
+
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
@@ -227,7 +224,7 @@ export default function PhotoPage() {
             </div>
 
             {/* Photo Details */}
-            <div className="w-[500px] justify-self-end space-y-2 sm:space-y-3">
+            <div className="cols-span-1 justify-self-end space-y-2 sm:space-y-3">
               <div className="bg-white rounded-lg shadow-md p-6 sm:p-8">
                 <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">{photo.title}</h1>
 
