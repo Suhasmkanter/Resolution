@@ -11,10 +11,10 @@ export default function HomePage() {
         <div className="bg-white -mx-6">
           <div className="py-16 sm:py-20 lg:py-28">
             <div className="text-center max-w-4xl mx-auto">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight">
                 Discover Amazing Photos
               </h1>
-              <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg p-3 sm:text-xl lg:text-2xl text-gray-600 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed">
                 High-quality royalty-free images from creators around the world.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
@@ -38,7 +38,7 @@ export default function HomePage() {
         <div className="py-12 sm:py-16 lg:py-20">
           {/* Latest Photos Section */}
           <section className="mb-16 sm:mb-20 lg:mb-24">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 sm:mb-10 gap-4">
+            <div className="flex justify-between sm:flex-row sm:items-center sm:justify-between mb-8 sm:mb-10 gap-4">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">Latest Photos</h2>
               <button className="text-white bg-blue-700 hover:text-blue-700 font-medium text-sm sm:text-base hover:underline transition-all duration-200 px-4 py-2 rounded-lg hover:bg-blue-50">
                 View All →
@@ -56,7 +56,7 @@ export default function HomePage() {
 
           {/* Trending Photos Section */}
           <section className="mb-16 sm:mb-20 lg:mb-24">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 sm:mb-10 gap-4">
+            <div className="flex  justify-between sm:flex-row sm:items-center sm:justify-between mb-8 sm:mb-10 gap-4">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">Trending Photos</h2>
               <button className="text-white hover:text-blue-700 font-medium text-sm sm:text-base hover:underline transition-all duration-200 px-4 py-2 rounded-lg hover:bg-blue-50 bg-blue-700">
                 View All →
