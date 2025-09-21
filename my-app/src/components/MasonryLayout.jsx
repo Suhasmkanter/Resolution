@@ -23,7 +23,7 @@ function MasonryGallery() {
     return (
         <Masonry
             breakpointCols={breakpointColumnsObj}
-            className="flex gap-3"
+            className="flex gap-2"
             columnClassName="bg-clip-padding"
         >
             {images.map((img, idx) => (

@@ -155,7 +155,7 @@ export default function Footer() {
                   {section.links.map((link) => (
                     <li key={link.href}>
                       <Link
-                        href={link.href}
+                        to={link.href}
                         className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 rounded-sm"
                       >
                         {link.label}

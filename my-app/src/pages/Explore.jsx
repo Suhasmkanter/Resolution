@@ -22,7 +22,7 @@ function Explore() {
             </label>
         </div>
 
-        <div className="max-w-full mx-auto px-3 py-6 sm:py-16 lg:py-20">
+        <div className="max-w-full mx-auto px-3 py-6 sm:py-6 lg:py-20">
             <MasonryGallery />
         </div>
 
