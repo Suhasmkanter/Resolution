@@ -17,7 +17,7 @@ function MasonryGallery() {
         default: 3, // for big screens
         1100: 3,    // below 1100px → 3 columns
         700: 2,     // below 700px → 2 columns
-        500: 1      // below 500px → 1 column
+        500: 2      // below 500px → 1 column
     };
 
     return (
