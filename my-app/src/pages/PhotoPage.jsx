@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { mockPhotos } from "../data/mockPhotos";
-
+import { footerSections } from "../data/mockPhotos";
 export default function PhotoPage() {
   const { id } = useParams();
   const [photo, setPhoto] = useState(null);
@@ -194,7 +194,7 @@ export default function PhotoPage() {
           <div className="grid grid-cols-1  lg:grid-cols-3 gap-4 sm:gap-8">
             {/* Photo Display */}
             <div className="col-span-2 space-y-4 sm:space-y-6">
-              <div className="w-full max-w-[950px] h-[500px] flex justify-center  overflow-hidden">
+              <div className="w-full max-w-[950px] lg:h-[500px] h-auto   flex justify-center  overflow-hidden">
                 <img
                   src={photo.imageURL}
                   alt="Photo"

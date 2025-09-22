@@ -4,44 +4,8 @@ import { useState, useEffect } from "react"
 import { Button } from "./ui/button"
 import { ArrowUp, Facebook, Instagram, Twitter, Linkedin, Youtube, Camera } from "lucide-react"
 import { Link } from "react-router-dom"
+import { footerSections } from "../data/mockPhotos"
 
-const footerSections = [
-  {
-    title: "Company",
-    links: [
-      { label: "About Us", href: "/about" },
-      { label: "FAQ", href: "/faq" },
-      { label: "License Summary", href: "/license" },
-      { label: "API", href: "/api" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { label: "Terms of Service", href: "/terms" },
-      { label: "Privacy Policy", href: "/privacy" },
-      { label: "Cookies Policy", href: "/cookies" },
-      { label: "Digital Services Act", href: "/dsa" },
-      { label: "Report Content", href: "/report" },
-    ],
-  },
-  {
-    title: "Community",
-    links: [
-      { label: "Contributors", href: "/contributors" },
-      { label: "Guidelines", href: "/guidelines" },
-      { label: "Careers", href: "/careers" },
-      { label: "Blog", href: "/blog" },
-    ],
-  },
-  {
-    title: "Support",
-    links: [
-      { label: "Contact", href: "/contact" },
-      { label: "Help Center", href: "/help" },
-    ],
-  },
-]
 
 const socialLinks = [
   {
@@ -79,6 +43,7 @@ const socialLinks = [
 export default function Footer() {
   const [showBackToTop, setShowBackToTop] = useState(false)
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
+  const [windowSize, setWindowSize] = useState([window.innerWidth, window.innerHeight])
 
   useEffect(() => {
     // Update year dynamically
@@ -145,7 +110,38 @@ export default function Footer() {
           </div>
 
           {/* Navigation Sections */}
-          {footerSections.map((section) => (
+          {window.innerWidth > 640 && <div className="flex  w-[100vw] gap-20">
+
+
+            {
+              footerSections.map((section) => (
+
+                <div key={section.title} className="lg:col-span-1">
+                  <h4 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
+                    {section.title}
+                  </h4>
+                  <nav>
+                    <ul className="space-y-3">
+                      {section.links.map((link) => (
+                        <li key={link.href}>
+                          <Link
+                            to={link.href}
+                            className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 rounded-sm"
+                          >
+                            {link.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
+                </div>
+              ))
+            }
+          </div>
+
+
+          /* {footerSections.map((section) => (
+
             <div key={section.title} className="lg:col-span-1">
               <h4 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
                 {section.title}
@@ -165,7 +161,7 @@ export default function Footer() {
                 </ul>
               </nav>
             </div>
-          ))}
+          ))} */}
         </div>
 
         {/* Bottom Section */}
