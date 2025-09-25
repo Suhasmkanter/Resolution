@@ -168,42 +168,29 @@ export default function PhotoPage() {
         </script>
       </Helmet>
 
-      <div className="min-h-full bg-gray-50">
-        <div className="max-w-full  mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <div className="min-h-full mt-[-20px] bg-gray-50">
+        <div className="max-w-full  mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
           {/* Breadcrumb */}
-          <nav className="mb-6 sm:mb-8">
-            <ol className="flex items-center space-x-2 text-sm text-gray-600">
-              <li>
-                <Link to="/" className="hover:text-blue-600">Home</Link>
-              </li>
-              <li>
-                <span className="mx-2">/</span>
-              </li>
-              <li>
-                <Link to={`/category/${photo.category.toLowerCase()}`} className="hover:text-blue-600">
-                  {photo.category}
-                </Link>
-              </li>
-              <li>
-                <span className="mx-2">/</span>
-              </li>
-              <li className="text-gray-900">{photo.title}</li>
-            </ol>
-          </nav>
+
 
           <div className="grid grid-cols-1  lg:grid-cols-3 gap-4 sm:gap-8">
             {/* Photo Display */}
             <div className="col-span-2 space-y-4 sm:space-y-6">
-              <div className="w-full max-w-[950px] lg:h-[500px] h-auto   flex justify-center  overflow-hidden">
+              <div className="w-full p-3 max-w-[950px] lg:h-[500px] h-auto flex justify-center overflow-hidden">
                 <img
                   src={photo.imageURL}
                   alt="Photo"
-                  className="w-full h-full object-contain rounded-lg shadow-md"
+                  className="w-full h-full object-contain rounded-lg "
                 />
               </div>
 
 
               {/* Action Buttons */}
+
+            </div>
+
+            {/* Photo Details */}
+            <div className="cols-span-1 justify-self-end space-y-2 sm:space-y-3">
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={handleDownload}
@@ -221,10 +208,6 @@ export default function PhotoPage() {
                   Share
                 </button>
               </div>
-            </div>
-
-            {/* Photo Details */}
-            <div className="cols-span-1 justify-self-end space-y-2 sm:space-y-3">
               <div className="bg-white rounded-lg shadow-md p-6 sm:p-8">
                 <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">{photo.title}</h1>
 
@@ -243,7 +226,7 @@ export default function PhotoPage() {
                 </div>
 
                 {/* Stats */}
-                {/* <div className="grid grid-cols-2 gap-4 mb-6 sm:mb-8">
+                <div className="grid grid-cols-2 gap-4 mb-6 sm:mb-8">
                   <div className="bg-gray-50 rounded-lg p-4 text-center">
                     <div className="text-xl sm:text-2xl font-bold text-blue-600">{formatNumber(viewCount)}</div>
                     <div className="text-sm text-gray-600">Views</div>
@@ -252,7 +235,7 @@ export default function PhotoPage() {
                     <div className="text-xl sm:text-2xl font-bold text-green-600">{formatNumber(downloadCount)}</div>
                     <div className="text-sm text-gray-600">Downloads</div>
                   </div>
-                </div> */}
+                </div>
 
                 {/* Category */}
                 <div className="mb-6 sm:mb-8">

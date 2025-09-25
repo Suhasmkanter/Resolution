@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from "./ui/dropdown-menu";
 
 function Navbar() {
   const { user, loading, logout } = useAuthStore();
+  let location = useLocation();
   console.log(user?.user_metadata?.avatar_url, "the data is loading ");
-
+  console.log(location);
   return (
     <nav className=" bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
       <div className="w-full  lg:px-6  ">
@@ -22,8 +23,12 @@ function Navbar() {
             </Link>
           </div>
           {/* Navigation Links - Desktop */}
-          <div className="hidden w-full md:flex justify-between items-center space-x-8   ">
-            <div className="flex w-full h-12 space-x-6 justify-end items-center">
+          {location && (location.pathname !== '/' && location.pathname !== '/explore') && <div div className="hidden md:flex w-full h-12 px-4   ">
+            <input type="text" placeholder="Search..." className="border bg-white w-full h-full rounded-3xl px-4 py-2" />
+          </div>}
+
+          <div className="hidden    md:flex justify-end items-center space-x-8   ">
+            <div className="flex w-full  h-12 space-x-6 justify-end items-center">
               <Link
                 to="/"
                 className="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 text-sm sm:text-base"
@@ -105,12 +110,8 @@ function Navbar() {
                 </div>
               )}
             </div>
-
-
-
           </div>
 
-          {/* Auth Buttons / User Avatar */}
 
 
           {/* Mobile Menu Button */}
@@ -157,7 +158,7 @@ function Navbar() {
           </div>
         </div> */}
       </div>
-    </nav>
+    </nav >
   );
 }
 

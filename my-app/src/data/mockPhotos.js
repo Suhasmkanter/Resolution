@@ -9,24 +9,8 @@ export const mockPhotos = [{
   downloads: 2340,
   category: "Nature"
 },
+
 {
-  id: 2,
-  title: "Forest Path",
-  imageURL: "https://pixabay.com/get/gb33dae9af6ae60f476a64ad2684183e2facd8fba0ef6854f3417bd95a5e2c9072408b4a088634d9249759d2e0b3d7a1cd0a55808b3124a2e698404819869df16_1280.jpg",
-  uploader: "John Doe",
-  views: 15420,
-  downloads: 2340,
-  category: "Nature"
-},
-{
-  id: 3,
-  title: "NewBorn ",
-  imageURL: "/newborn.jpg",
-  uploader: "John Doe",
-  views: 15420,
-  downloads: 2340,
-  category: "Nature"
-}, {
   id: 4,
   title: "Urban Architecture",
   imageURL: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop",
@@ -52,15 +36,6 @@ export const mockPhotos = [{
   views: 18760,
   downloads: 3200,
   category: "Urban"
-},
-{
-  id: 7,
-  title: "Forest Path",
-  imageURL: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop",
-  uploader: "David Brown",
-  views: 9870,
-  downloads: 1450,
-  category: "Nature"
 },
 {
   id: 8,
@@ -92,7 +67,7 @@ export const mockPhotos = [{
 ];
 
 // Separate data for Latest and Trending sections
-export const latestPhotos = mockPhotos.slice(0, 4);
+export const latestPhotos = mockPhotos.slice(0, 5);
 export const trendingPhotos = mockPhotos.slice(4, 8);
 
 export const socialLinks = [{
