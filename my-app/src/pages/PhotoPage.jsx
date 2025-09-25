@@ -3,6 +3,9 @@ import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { mockPhotos } from "../data/mockPhotos";
 import { footerSections } from "../data/mockPhotos";
+import { Button } from "../components/ui/button";
+import { HeartIcon, BookmarkIcon, MessageCircleIcon, DownloadIcon, Share2Icon, ChevronDownIcon } from "lucide-react"
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "../components/ui/dropdown-menu"
 export default function PhotoPage() {
   const { id } = useParams();
   const [photo, setPhoto] = useState(null);
@@ -183,80 +186,99 @@ export default function PhotoPage() {
                   className="w-full h-full object-contain rounded-lg "
                 />
               </div>
-
-
-              {/* Action Buttons */}
-
             </div>
-
             {/* Photo Details */}
             <div className="cols-span-1 justify-self-end space-y-2 sm:space-y-3">
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  onClick={handleDownload}
-                  className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center text-sm sm:text-base"
-                >
-                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                  Download
-                </button>
-                <button className="flex-1 bg-gray-100 text-gray-700 py-3 px-6 rounded-lg font-semibold hover:bg-gray-200 transition-colors flex items-center justify-center text-sm sm:text-base">
-                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
-                  </svg>
-                  Share
-                </button>
-              </div>
-              <div className="bg-white rounded-lg shadow-md p-6 sm:p-8">
-                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">{photo.title}</h1>
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center text-sm text-muted-foreground">
 
-                <div className="flex items-center space-x-4 mb-6 sm:mb-8">
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                      <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                      </svg>
+                </div>
+                <div className="flex gap-2">
+                  <Button variant="outline" className="flex-1 bg-transparent">
+
+                    <BookmarkIcon />  Save
+                  </Button>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button className="flex-1 bg-blue-700 hover:bg-blue-500 text-white">
+                        <DownloadIcon className="h-5 w-5 mr-2" />
+                        Download
+                        <ChevronDownIcon className="h-4 w-4 ml-2" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuItem>Small (640x960)</DropdownMenuItem>
+                      <DropdownMenuItem>Medium (1280x1920)</DropdownMenuItem>
+                      <DropdownMenuItem>Large (1920x2880)</DropdownMenuItem>
+                      <DropdownMenuItem>Original (3000x4500)</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
+                <div className="flex gap-2 mt-4">
+                  <Button variant="outline" className="flex-1 h-12 text-lg bg-transparent">
+                    <HeartIcon className="h-6 w-6 mr-2" />
+                    20
+                  </Button>
+
+                  <Button variant="outline" size="icon" className="h-12 flex-1 bg-transparent">
+                    <MessageCircleIcon className="h-6 w-6" />
+                  </Button>
+                  <Button variant="outline" size="icon" className="h-12 flex-1 w-12 bg-transparent">
+                    <Share2Icon className="h-6 w-6" />
+                  </Button>
+                </div>
+                <div className="grid grid-cols-2 items-center  gap-4 mt-4">
+                  <div className="flex flex-col items-center">
+                    <p className="text-muted-foreground">Views</p>
+                    <p className="text-lg font-bold">1,152</p>
+                  </div>
+                  <div className="flex  flex-col items-center">
+                    <p className="text-muted-foreground">Downloads</p>
+                    <p className="text-lg font-bold">821</p>
+                  </div>
+                </div>
+                <a href="#" className="text-primary text-sm mt-2">
+                  Show details
+                  <ChevronDownIcon className="h-4 w-4 inline-block ml-1" />
+                </a>
+                <div className="border-t pt-4 mt-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full overflow-hidden">
+                        <img
+                          src="/userimage.png"
+                          alt="User Avatar"
+                          width={40}
+                          height={40}
+                          className="object-cover"
+                        />
+                      </div>
+                      <div>
+                        <p className="font-medium">AiArtista</p>
+                        <p className="text-sm text-muted-foreground">579 followers</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-semibold text-gray-900 text-sm sm:text-base">{photo.uploader}</p>
-                      <p className="text-sm text-gray-600">Photographer</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Stats */}
-                <div className="grid grid-cols-2 gap-4 mb-6 sm:mb-8">
-                  <div className="bg-gray-50 rounded-lg p-4 text-center">
-                    <div className="text-xl sm:text-2xl font-bold text-blue-600">{formatNumber(viewCount)}</div>
-                    <div className="text-sm text-gray-600">Views</div>
-                  </div>
-                  <div className="bg-gray-50 rounded-lg p-4 text-center">
-                    <div className="text-xl sm:text-2xl font-bold text-green-600">{formatNumber(downloadCount)}</div>
-                    <div className="text-sm text-gray-600">Downloads</div>
-                  </div>
-                </div>
-
-                {/* Category */}
-                <div className="mb-6 sm:mb-8">
-                  <h3 className="text-sm font-semibold text-gray-700 mb-2">Category</h3>
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-                    {photo.category}
-                  </span>
-                </div>
-
-                {/* Tags */}
-                <div>
-                  <h3 className="text-sm font-semibold text-gray-700 mb-2">Tags</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {[photo.category.toLowerCase(), 'photography', 'high-quality', 'professional'].map((tag) => (
-                      <span
-                        key={tag}
-                        className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 cursor-pointer transition-colors"
+                    <Button variant="outline" className="bg-transparent">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="h-5 w-5 mr-2"
                       >
-                        #{tag}
-                      </span>
-                    ))}
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M22 11v.01" />
+                        <path d="M18 11v.01" />
+                        <path d="M20 8v.01" />
+                      </svg>
+                      Follow
+                    </Button>
                   </div>
                 </div>
               </div>
