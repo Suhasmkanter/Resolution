@@ -1,12 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from "./ui/dropdown-menu";
+import { Button } from "./ui/button";
 
 function Navbar() {
   const { user, loading, logout } = useAuthStore();
   let location = useLocation();
-  console.log(user?.user_metadata?.avatar_url, "the data is loading ");
-  console.log(location);
   return (
     <nav className=" bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
       <div className="w-full  lg:px-6  ">
@@ -24,10 +23,10 @@ function Navbar() {
           </div>
           {/* Navigation Links - Desktop */}
           {location && (location.pathname !== '/' && location.pathname !== '/explore') && <div div className="hidden md:flex w-full h-12 px-4   ">
-            <input type="text" placeholder="Search..." className="border bg-white w-full h-full rounded-3xl px-4 py-2" />
+            <input type="text" placeholder="Search..." className="border bg-white w-[80%] h-full rounded-3xl px-4 py-2" />
           </div>}
 
-          <div className="hidden    md:flex justify-end items-center space-x-8   ">
+          <div className="hidden md:flex justify-end items-center   ">
             <div className="flex w-full  h-12 space-x-6 justify-end items-center">
               <Link
                 to="/"
@@ -94,26 +93,34 @@ function Navbar() {
                 </Link> */}
                 </div>
               ) : (
-                <div className="flex items-center space-x-2">
-                  <Link
-                    to="/login"
-                    className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-white border border-gray-300 text-gray-700 text-sm font-medium rounded-full hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 shadow-sm"
+                <div className="flex  items-center space-x-2">
+                  <Button
+                    asChild={true}
+                    variant={'outline'}
+                    className="inline-flex  items-center  sm:px-6 py-2 sm:py-3 bg-white border border-gray-300 text-gray-700 text-sm font-medium rounded-full hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 shadow-sm"
                   >
-                    {loading ? '...' : 'Sign in'}
-                  </Link>
-                  <Link
-                    to="/signup"
-                    className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-blue-600 text-white text-sm font-medium rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 shadow-sm"
+                    <Link
+                      to="/login"
+                      className="inline-flex  items-center  sm:px-6 py-2 sm:py-3 bg-white border border-gray-300 text-gray-700 text-sm font-medium rounded-full hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 shadow-sm"
+                    >
+                      {loading ? '...' : 'Sign in'}
+                    </Link>
+                  </Button>
+                  <Button
+                    variant={"outline"}
+                    asChild={true}
                   >
-                    Sign up
-                  </Link>
+                    <Link
+                      to={'/signup'}
+                      className=" bg-blue-600  px-4 sm:px-6 py-2 sm:py-3  text-white text-sm font-medium rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2  focus:ring-blue-500 transition-all duration-200 shadow-sm"
+                    >
+                      Sign up
+                    </Link>
+                  </Button>
                 </div>
               )}
             </div>
           </div>
-
-
-
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button className="text-white  p-2 rounded-md">
@@ -123,7 +130,6 @@ function Navbar() {
             </button>
           </div>
         </div>
-
         {/* Mobile Navigation Menu */}
         {/* <div className="md:hidden border-t border-gray-200 py-4">
           <div className="flex flex-col space-y-3">

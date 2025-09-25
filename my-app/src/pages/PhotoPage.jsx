@@ -171,7 +171,7 @@ export default function PhotoPage() {
         </script>
       </Helmet>
 
-      <div className="min-h-full mt-[-20px] bg-gray-50">
+      <div className="min-h-full mt-[-10px] bg-gray-50">
         <div className="max-w-full  mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
           {/* Breadcrumb */}
 
