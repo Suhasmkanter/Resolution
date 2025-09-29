@@ -18,6 +18,7 @@ import Learning from "./pages/Learning";
 import GridConcepts from "./pages/GridConcepts";
 import Profilepage from "./pages/Profilepage";
 import EmailVerification from "./pages/EmailVerification";
+import ResetPassword from "./pages/Reset-password";
 
 function App() {
   // In your Auth store or App root
@@ -55,6 +56,7 @@ function App() {
         <Route path="/explore" element={<Explore />} />
         <Route path="/gridconcepts" element={<GridConcepts />} />
         <Route path='/emailVerification' element={<EmailVerification />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route
           path="/profile"
           element={
