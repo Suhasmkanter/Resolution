@@ -9,10 +9,10 @@
             }
         }
     ],
-    "rewrites": [
+    "routes": [
         {
-            "source": "/((?!assets|favicon\\.ico).*)",
-            "destination": "/my-app/index.html"
+            "src": "/.*",
+            "dest": "/my-app/index.html"
         }
     ]
 }
