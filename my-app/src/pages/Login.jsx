@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
 import { Button } from "../components/ui/button";
 import { FcGoogle } from "react-icons/fc";
@@ -9,6 +9,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [formError, setFormError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     clearError?.();
@@ -16,8 +17,10 @@ export default function Login() {
 
   useEffect(() => {
     if (user) {
-      const from = location.state?.from?.pathname || "/";
-      window.location.href = from;
+      // Redirect to the page they tried to access or to the homepage
+
+      const from = localStorage.getItem("redirectAfterLogin") || "/";
+      navigate(from, { replace: true });
     }
   }, [user, location]);
 
@@ -88,6 +91,7 @@ export default function Login() {
               className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="********"
             />
+            <a href="/emailverification" className="text-sm text-blue-600 hover:underline">Forgot password?</a>
           </div>
           <button
             type="submit"

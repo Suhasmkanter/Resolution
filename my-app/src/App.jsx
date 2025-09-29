@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./pages/Home";
@@ -15,9 +15,20 @@ import useAuthStore from "./store/useAuthStore";
 import { supabase } from "./supabaseClient";
 import Explore from "./pages/Explore";
 import Learning from "./pages/Learning";
+import GridConcepts from "./pages/GridConcepts";
+import Profilepage from "./pages/Profilepage";
+import EmailVerification from "./pages/EmailVerification";
 
 function App() {
   // In your Auth store or App root
+  const initialize = useAuthStore((state) => state.initialize);
+
+  useEffect(() => {
+    initialize();
+  }, [initialize]);
+
+  const location = useLocation();
+  console.log(location, 'protected route location')
   useEffect(() => {
     const getSession = async () => {
       const { data } = await supabase.auth.getSession();
@@ -29,11 +40,7 @@ function App() {
     getSession();
   }, []);
 
-  const initialize = useAuthStore((state) => state.initialize);
 
-  useEffect(() => {
-    initialize();
-  }, [initialize]);
 
   return (
     <Layout>
@@ -46,11 +53,13 @@ function App() {
         <Route path="/photo/:id" element={<PhotoPage />} />
         <Route path="/learning" element={<Learning />} />
         <Route path="/explore" element={<Explore />} />
+        <Route path="/gridconcepts" element={<GridConcepts />} />
+        <Route path='/emailVerification' element={<EmailVerification />} />
         <Route
-          path="/dashboard"
+          path="/profile"
           element={
             <ProtectedRoute>
-              <Dashboard />
+              <Profilepage />
             </ProtectedRoute>
           }
         />

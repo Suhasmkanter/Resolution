@@ -226,6 +226,21 @@ const useAuthStore = create((set, get) => ({
     }
   },
 
+  emailVerification: async (email) => {
+    try {
+      set({ loading: true, error: null })
+      console.log(email, "<-- email in auth store")
+
+      const response = await authService.resendConfirmation({ email })
+      console.log(response, "The response from email verification")
+    } catch (error) {
+      console.error('Error in email verification:', error)
+      set({ loading: false, error: error.message })
+      throw error
+    }
+  },
+
+
   // Clear error
   clearError: () => set({ error: null }),
 

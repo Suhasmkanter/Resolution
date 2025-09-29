@@ -1,6 +1,6 @@
 import React from "react";
 import Masonry from "react-masonry-css";
-
+import { cn } from "@/lib/utils"
 const images = [
     "/images.jpg",
     "/poppy.jpg",
@@ -12,18 +12,13 @@ const images = [
 
 ];
 
-function MasonryGallery() {
-    const breakpointColumnsObj = {
-        default: 3, // for big screens
-        1100: 3,    // below 1100px → 3 columns
-        700: 2,     // below 700px → 2 columns
-        500: 2      // below 500px → 1 column
-    };
+function MasonryGallery({ breakpointsColumnsObj, className }) {
 
+    console.log(className)
     return (
         <Masonry
-            breakpointCols={breakpointColumnsObj}
-            className="flex gap-2"
+            breakpointCols={breakpointsColumnsObj}
+            className={cn("flex gap-2", className)}
             columnClassName="bg-clip-padding"
         >
             {images.map((img, idx) => (
@@ -31,7 +26,7 @@ function MasonryGallery() {
                     key={idx}
                     src={img}
                     alt={`img-${idx}`}
-                    className="w-full mb-4 rounded-lg"
+                    className="w-full mb-4 rounded-sm"
                 />
             ))}
         </Masonry>

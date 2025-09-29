@@ -1,7 +1,7 @@
 // controllers/authController.js
 import supabase from '../config/supabase.js';
 import { AuthService } from '../services/authService.js';
-
+import nodemailer from "nodemailer";
 /**
  * Sign up with email and password (requires email verification)
  */
@@ -221,35 +221,30 @@ export const handleAuthCallback = async (req, res) => {
  * Resend email confirmation
  */
 export const resendConfirmation = async (req, res) => {
-  try {
-    const { email } = req.body;
+  console.log("Resend confirmation called")
+  let { email } = req.body;
 
-    if (!email) {
-      return res.status(400).json({
-        success: false,
-        error: 'Email is required'
-      });
+
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.EMAIL_USER, // Your Gmail address
+      pass: process.env.EMAIL_PASS // App Password
     }
+  });
 
-    const result = await AuthService.resendConfirmation(email);
+  const info = await transporter.sendMail({
+    from: process.env.EMAIL_USER,
+    to: email,
+    subject: "Email Confirmation",
+    html: `<p>Click the link below to reset your password:</p>
+    <a href="resetLink">Reset Password</a>
+    <p>This link is valid for 15 minutes.</p>`
+  });
 
-    if (!result.success) {
-      return res.status(400).json(result);
-    }
+  console.log("Email sent: ", info.messageId);
+}
 
-    return res.status(200).json({
-      success: true,
-      message: 'Confirmation email resent'
-    });
-
-  } catch (error) {
-    console.error('Resend confirmation error:', error);
-    return res.status(500).json({
-      success: false,
-      error: 'Failed to resend confirmation'
-    });
-  }
-};
 
 /**
  * Get current user profile

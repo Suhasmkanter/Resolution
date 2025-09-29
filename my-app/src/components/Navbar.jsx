@@ -4,10 +4,11 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem,
 import { Button } from "./ui/button";
 
 function Navbar() {
-  const { user, loading, logout } = useAuthStore();
+  const { user, loading, logout, session } = useAuthStore();
   let location = useLocation();
+  console.log(session, loading)
   return (
-    <nav className=" bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+    <nav className=" bg-white border-b border-gray-200 shadow-sm sticky top-0 z-10">
       <div className="w-full  lg:px-6  ">
         <div className="w-[100%] flex justify-between px-5   items-center h-16 sm:h-20">
           {/* Brand */}
@@ -60,7 +61,7 @@ function Navbar() {
                       <DropdownMenuLabel>My Account</DropdownMenuLabel>
                       <DropdownMenuGroup>
                         <DropdownMenuItem>
-                          <Link to={'/dashboard'}>
+                          <Link to={'/profile'}>
                             Profile
                           </Link>
 

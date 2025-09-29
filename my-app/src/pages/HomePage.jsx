@@ -1,9 +1,20 @@
 import { Link } from "react-router-dom";
 import PhotoCard from "../components/PhotoCard";
 import { latestPhotos, trendingPhotos } from "../data/mockPhotos";
+import { useAuthStore } from "@/store";
+import { supabase } from "@/supabaseClient";
+import { useEffect } from "react";
 //import ApiTest from "../components/ApiTest";
 
 export default function HomePage() {
+  const { loading, user } = useAuthStore()
+  useEffect(() => {
+    async function fetchSession() {
+      const data = await supabase.auth.getSession()
+      console.log(data, "The data from homepage");
+    }
+    fetchSession()
+  }, [])
   return (
     <div className="flex-1 w-full min-h-screen bg-gray-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">

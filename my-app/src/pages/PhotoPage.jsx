@@ -2,17 +2,19 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { mockPhotos } from "../data/mockPhotos";
-import { footerSections } from "../data/mockPhotos";
 import { Button } from "../components/ui/button";
 import { HeartIcon, BookmarkIcon, MessageCircleIcon, DownloadIcon, Share2Icon, ChevronDownIcon } from "lucide-react"
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "../components/ui/dropdown-menu"
+import { mockUserPhotos } from "../data/mockUserPhotos";
+import MasonryGallery from "@/components/MasonryLayout";
 export default function PhotoPage() {
   const { id } = useParams();
   const [photo, setPhoto] = useState(null);
   const [loading, setLoading] = useState(true);
   const [downloadCount, setDownloadCount] = useState(0);
   const [viewCount, setViewCount] = useState(0);
-
+  const [relatedPhotos, setRelatedPhotos] = useState(mockUserPhotos);
+  console.log(relatedPhotos)
   useEffect(() => {
     // Simulate API call delay
     const timer = setTimeout(() => {
@@ -171,32 +173,43 @@ export default function PhotoPage() {
         </script>
       </Helmet>
 
-      <div className="min-h-full mt-[-10px] bg-gray-50">
-        <div className="max-w-full  mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
-          {/* Breadcrumb */}
+      <div className="min-h-screen bg-gray-50">
+        <div className="max-w-full mx-auto  sm:px-6 lg:px-8 py-4 sm:py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-4  sm:gap-8 ">
 
-
-          <div className="grid grid-cols-1  lg:grid-cols-3 gap-4 sm:gap-8">
-            {/* Photo Display */}
-            <div className="col-span-2 space-y-4 sm:space-y-6">
-              <div className="w-full p-3 max-w-[950px] lg:h-[500px] h-auto flex justify-center overflow-hidden">
+            {/* Photo Display - Left Column */}
+            <div className="col-span-3  sm:space-y-6">
+              <div className="w-full p-2 max-w-[950px] lg:h-[500px] h-auto flex justify-center overflow-hidden">
                 <img
                   src={photo.imageURL}
                   alt="Photo"
-                  className="w-full h-full object-contain rounded-lg "
+                  className="w-full h-full object-contain rounded-lg"
                 />
               </div>
-            </div>
-            {/* Photo Details */}
-            <div className="cols-span-1 justify-self-end space-y-2 sm:space-y-3">
-              <div className="flex flex-col gap-4">
-                <div className="flex items-center text-sm text-muted-foreground">
 
+              <div>
+                <div className=" w-full   rounded-lg shadow-md  sm:p-8 mt-4">
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4 sm:mb-6">
+                    Related Photos
+                  </h3>
+                  <div className="grid grid-cols-1 gap-4">
+
+
+                    <MasonryGallery breakpointsColumnsObj={{ default: 3, 1100: 2, 700: 2, 500: 1 }} photos={relatedPhotos.filter((p) => p.category === photo.category)} />
+
+                  </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Photo Details - Right Column */}
+            <div className="sticky  self-start top-4 col-span-1  ">
+              <div className="flex  flex-col w-full  text-sm text-black">
+
+                {/* Buttons */}
                 <div className="flex gap-2">
                   <Button variant="outline" className="flex-1 bg-transparent">
-
-                    <BookmarkIcon />  Save
+                    <BookmarkIcon /> Save
                   </Button>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
@@ -214,12 +227,12 @@ export default function PhotoPage() {
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
+
+                {/* Likes, Comments, Share */}
                 <div className="flex gap-2 mt-4">
                   <Button variant="outline" className="flex-1 h-12 text-lg bg-transparent">
-                    <HeartIcon className="h-6 w-6 mr-2" />
-                    20
+                    <HeartIcon className="h-6 w-6 mr-2" /> 20
                   </Button>
-
                   <Button variant="outline" size="icon" className="h-12 flex-1 bg-transparent">
                     <MessageCircleIcon className="h-6 w-6" />
                   </Button>
@@ -227,20 +240,25 @@ export default function PhotoPage() {
                     <Share2Icon className="h-6 w-6" />
                   </Button>
                 </div>
-                <div className="grid grid-cols-2 items-center  gap-4 mt-4">
+
+                {/* Stats */}
+                <div className="grid grid-cols-2 items-center gap-4 mt-4">
                   <div className="flex flex-col items-center">
                     <p className="text-muted-foreground">Views</p>
                     <p className="text-lg font-bold">1,152</p>
                   </div>
-                  <div className="flex  flex-col items-center">
+                  <div className="flex flex-col items-center">
                     <p className="text-muted-foreground">Downloads</p>
                     <p className="text-lg font-bold">821</p>
                   </div>
                 </div>
+
                 <a href="#" className="text-primary text-sm mt-2">
                   Show details
                   <ChevronDownIcon className="h-4 w-4 inline-block ml-1" />
                 </a>
+
+                {/* User Info */}
                 <div className="border-t pt-4 mt-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
@@ -280,41 +298,18 @@ export default function PhotoPage() {
                       Follow
                     </Button>
                   </div>
-                </div>
-              </div>
 
-              {/* Related Photos */}
-              <div className="bg-white rounded-lg shadow-md p-6 sm:p-8">
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4 sm:mb-6">Related Photos</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  {mockPhotos
-                    .filter(p => p.id !== photo.id && p.category === photo.category)
-                    .slice(0, 4)
-                    .map((relatedPhoto) => (
-                      <Link
-                        key={relatedPhoto.id}
-                        to={`/photo/${relatedPhoto.id}`}
-                        className="group"
-                      >
-                        <div className="relative overflow-hidden rounded-lg">
-                          <img
-                            src={relatedPhoto.imageURL}
-                            alt={relatedPhoto.title}
-                            className="w-full max-w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
-                          />
-                          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
-                        </div>
-                        <p className="text-sm font-medium text-gray-900 mt-2 line-clamp-1">
-                          {relatedPhoto.title}
-                        </p>
-                      </Link>
-                    ))}
+                  {/* Related Photos */}
+
                 </div>
               </div>
             </div>
+
           </div>
-        </div>
-      </div>
+        </div >
+      </div >
+
+
     </>
   );
 } 

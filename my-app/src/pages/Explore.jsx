@@ -23,7 +23,7 @@ function Explore() {
         </div>
 
         <div className="max-w-full mx-auto px-3 py-6 sm:py-6 lg:py-20">
-            <MasonryGallery />
+            <MasonryGallery breakpointsColumnsObj={{ default: 3, 640: 2, 1024: 3 }} />
         </div>
 
 

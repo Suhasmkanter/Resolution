@@ -110,13 +110,11 @@ export default function Footer() {
           </div>
 
           {/* Navigation Sections */}
-          {window.innerWidth > 640 && <div className="flex  w-[100vw] gap-20">
-
-
+          {window.innerWidth > 640 && <div className="flex  w-[55vw] gap-20">
             {
               footerSections.map((section) => (
 
-                <div key={section.title} className="lg:col-span-1">
+                <div key={section.title} className="w-[500px] ">
                   <h4 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
                     {section.title}
                   </h4>

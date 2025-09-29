@@ -13,9 +13,9 @@ export default function Layout({ children }) {
     }
   }, [location.pathname])
   return (
-    <div className="flex flex-col min-h-screen">
+    <div >
       {!showing ? <Navbar /> : null}
-      <main className="flex-1">
+      <main >
         {children}
       </main>
       <Footer />

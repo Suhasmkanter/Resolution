@@ -1,11 +1,11 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
 
 export default function ProtectedRoute({ children }) {
   const { user, loading } = useAuthStore();
 
-  // Show loading state while checking authentication
-  if (loading) {
+
+  if (loading && user === null) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-lg">Loading...</div>
@@ -13,11 +13,12 @@ export default function ProtectedRoute({ children }) {
     );
   }
 
-  // Redirect to login if not authenticated
   if (!user) {
+    // Save the route they wanted in `state` so we can redirect after login
+    const location = useLocation();
+    localStorage.setItem("redirectAfterLogin", location.pathname); // save path
     return <Navigate to="/login" replace />;
   }
 
-  // Render children if authenticated
   return children;
-} 
+}

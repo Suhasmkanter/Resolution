@@ -67,7 +67,8 @@ export const authService = {
   // Resend confirmation email
   async resendConfirmation(email) {
     try {
-      return await apiClient.post('/auth/resend-confirmation', { email })
+      console.log(email, "<-- email in auth service")
+      return await apiClient.post('/auth/resend-confirmation', email)
     } catch (error) {
       throw error
     }

@@ -69,7 +69,7 @@ class ApiClient {
 
   // POST request
   async post(endpoint, data) {
-    console.log(endpoint, data, "<-- POST request data")
+    alert(endpoint, data, "<-- POST request data")
     return this.request(endpoint, {
       method: 'POST',
       body: JSON.stringify(data),
