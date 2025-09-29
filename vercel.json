@@ -9,13 +9,10 @@
             }
         }
     ],
-    "routes": [
+    "rewrites": [
         {
-            "src": "/(.*)",
-            "dest": "/my-app/index.html",
-            "methods": [
-                "GET"
-            ]
+            "source": "/((?!assets|favicon\\.ico).*)",
+            "destination": "/my-app/index.html"
         }
     ]
 }
