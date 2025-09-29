@@ -1,5 +1,6 @@
 // controllers/authController.js
 import supabase from '../config/supabase.js';
+import { generateJWTtoken } from '../middleware/authMiddleware.js';
 import { AuthService } from '../services/authService.js';
 import nodemailer from "nodemailer";
 /**
@@ -233,16 +234,24 @@ export const resendConfirmation = async (req, res) => {
     }
   });
 
+  const token = generateJWTtoken(email)
+  console.log(token, "The token generated for email confirmation")
+  const resetLink = `${process.env.FRONTEND_URL}/reset-password?token=${token}`;
+
+
   const info = await transporter.sendMail({
     from: process.env.EMAIL_USER,
     to: email,
     subject: "Email Confirmation",
     html: `<p>Click the link below to reset your password:</p>
-    <a href="resetLink">Reset Password</a>
+    <a href=${resetLink}>Reset Password</a>
     <p>This link is valid for 15 minutes.</p>`
   });
 
-  console.log("Email sent: ", info.messageId);
+  return res.status(200).json({
+    success: true,
+    message: 'Confirmation email resent. Check your inbox.'
+  });
 }
 
 

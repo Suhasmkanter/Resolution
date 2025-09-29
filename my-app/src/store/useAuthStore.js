@@ -10,6 +10,7 @@ const useAuthStore = create((set, get) => ({
   isAdmin: false,
   error: null,
   user: null,
+  emailConfirmed: false,
   setUser: (user) => set({ user }), // <-- THIS
 
 
@@ -232,7 +233,13 @@ const useAuthStore = create((set, get) => ({
       console.log(email, "<-- email in auth store")
 
       const response = await authService.resendConfirmation({ email })
-      console.log(response, "The response from email verification")
+      console.log(response, "<-- response from email verification in auth store")
+
+      if (response.success) {
+        set({ loading: false, emailConfirmed: true })
+      } else {
+        set({ loading: false, emailConfirmed: false })
+      }
     } catch (error) {
       console.error('Error in email verification:', error)
       set({ loading: false, error: error.message })

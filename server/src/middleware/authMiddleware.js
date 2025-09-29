@@ -1,5 +1,6 @@
+import { processLock } from "@supabase/supabase-js";
 import supabase from "../config/supabase.js";
-
+import jwt from 'jsonwebtoken';
 export const requireAuth = async (req, res, next) => {
   try {
     const authHeader = req.headers.authorization;
@@ -44,3 +45,18 @@ export const requireAuth = async (req, res, next) => {
     });
   }
 };
+
+
+
+export const generateJWTtoken = (email) => {
+
+  try {
+    // synchronous version – returns token directly
+    const token = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '15m' });
+    console.log(token, "The generated token");
+    return token;
+  } catch (error) {
+    console.error('JWT generation error:', error);
+    throw new Error('Failed to generate token');
+  }
+}
