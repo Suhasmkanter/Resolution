@@ -8,5 +8,11 @@
                 "distDir": "dist"
             }
         }
+    ],
+    "routes": [
+        {
+            "src": "/(?!assets|favicon\\.ico|manifest\\.json).*",
+            "dest": "/my-app/index.html"
+        }
     ]
 }
