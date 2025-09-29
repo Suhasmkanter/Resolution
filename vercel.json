@@ -5,14 +5,17 @@
             "src": "my-app/package.json",
             "use": "@vercel/static-build",
             "config": {
-                "distDir": "dist"
+                "distDir": "build"
             }
         }
     ],
-    "rewrites": [
+    "routes": [
         {
-            "source": "/(.*)",
-            "destination": "/my-app/index.html"
+            "src": "/(.*)",
+            "dest": "/my-app/index.html",
+            "methods": [
+                "GET"
+            ]
         }
     ]
 }
