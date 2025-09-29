@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
         {
-            "src": "my-app/package.json",
+            "src": "package.json",
             "use": "@vercel/static-build",
             "config": {
                 "distDir": "dist"
@@ -11,8 +11,8 @@
     ],
     "routes": [
         {
-            "src": "/(?!assets|favicon\\.ico|manifest\\.json).*",
-            "dest": "/my-app/index.html"
+            "src": "/.*",
+            "dest": "/index.html"
         }
     ]
 }
